@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Container, NumberInput, Select } from '@mantine/core';
 import './filters.css';
 
-function Filters() {
+interface FiltersProps {
+  accessToken: string | null;
+}
+
+function Filters({ accessToken }: FiltersProps) {
   const [selectedOption, setSelectedOption] = useState<string>('');
 
   const handleOptionChange = (value: string) => {
@@ -16,6 +20,33 @@ function Filters() {
       setInputValue(value);
     }
   };
+
+  const [catalog, setCatalog] = useState([]);
+
+  useEffect(() => {
+    const Catalogues = () => {
+      fetch(
+        'https://startup-summer-2023-proxy.onrender.com/2.0/catalogues/',
+        {
+          headers: {
+            'x-secret-key': 'GEU4nvd3rej*jeh.eqp',
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+        )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setCatalog(data);
+        })
+        .catch((error) => {
+          console.error('Error fetching access token:', error);
+        });
+    };
+
+    Catalogues();
+  }, []);
+
   return (
     <Container className="filters_component" size="315px" style={{ marginBottom: '20px', border: 'solid 2px #EAEBED', borderRadius: '12px', padding: '20px', margin: '0' }}>
       <div className="header__container">
@@ -27,7 +58,10 @@ function Filters() {
       <h2 className="filters_title">Отрасль</h2>
       <Select
         className="filter__select"
-        data={['Option 1', 'Option 2', 'Option 3']}
+        data={catalog.map((item) => ({
+          value: item.title_rus,
+          label: item.title_rus,
+        }))}
         value={selectedOption}
         onChange={handleOptionChange}
         placeholder="Выберите отрасль"

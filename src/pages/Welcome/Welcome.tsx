@@ -1,7 +1,7 @@
-import { Button, Loader, Stack, Text } from '@mantine/core';
+import { Loader } from '@mantine/core';
+import { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import Filters from '../../components/Filters/Filters';
-import { useEffect, useState } from 'react';
 import { APIData } from '../../api/api';
 import Find from '../../components/Find/Find';
 import './index.css';
@@ -24,13 +24,12 @@ export function Welcome() {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          setAccessToken(data);
+          setAccessToken(data.access_token);
           setIsLoading(false);
         })
         .catch((error) => {
           console.error('Error fetching access token:', error);
           setIsLoading(false);
-
         });
     };
 
@@ -41,23 +40,12 @@ export function Welcome() {
     return (
       <div>
       <Header />
-      <div className='main'>
-        <Filters />
+      <div className="main">
+        <Filters accessToken={accessToken} />
        <div><Find /></div>
       </div>
       </div>
-     
-  /* 
-      <Stack align="center" mt={50}>
-        <Text size="xl" weight={500}>
-          Welcome to Mantine!
-        </Text>
-        <Button>Click the button</Button>
-       
-      </Stack> */
     );
-  } else {
-    return <Loader />
   }
-
+    return <Loader />;
 }
