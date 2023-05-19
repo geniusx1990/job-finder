@@ -1,38 +1,59 @@
 import React, { useState } from 'react';
-import { Container, Select, Slider } from '@mantine/core';
+import { Button, Container, Input, NumberInput, Select, Slider } from '@mantine/core';
+import './filters.css'
 
 function Filters() {
   const [selectedOption, setSelectedOption] = useState<string>('');
-  const [selectedCheckboxes, setSelectedCheckboxes] = useState<string[]>([]);
-  const [sliderValue, setSliderValue] = useState<[number, number]>([0, 100]);
 
   const handleOptionChange = (value: string) => {
     setSelectedOption(value);
   };
 
-  const handleCheckboxChange = (values: string[]) => {
-    setSelectedCheckboxes(values);
-  };
 
-  const handleSliderChange = (value: [number, number]) => {
-    setSliderValue(value);
-  };
 
+
+  const [inputValue, setInputValue] = useState<number | ''>('');
+
+  const handleChange = (value: number | '') => {
+    if (value !== '' && (typeof value === 'number' && value >= 0)) {
+      setInputValue(value);
+    }
+  };
   return (
-    <Container size="md" style={{ marginBottom: '20px' }}>
-      <h2>Filters</h2>
+    <Container className='filters_component' size="315px" style={{ marginBottom: '20px', border: 'solid 2px #EAEBED', borderRadius: '12px', padding: '20px', margin: '0'}}>
+      <div className='header__container'>
+        <h2 className='component__title'>Фильтры</h2>
+            <Button className='button'>Сбросить все x</Button>
+      </div>
+
+      <div className='filters'>
+      <h2 className='filters_title'>Отрасль</h2>
       <Select
+        className='filter__select'
         data={['Option 1', 'Option 2', 'Option 3']}
         value={selectedOption}
         onChange={handleOptionChange}
-        placeholder="Select an option"
+        placeholder="Выберите отрасль"
       />
+    <h2 className='filters_title'>Оклад</h2>
+    <NumberInput 
+    className='price_from'
+     placeholder="От"
+     value={inputValue}
+     onChange={handleChange}
+     >
+    </NumberInput>
+    <NumberInput 
+    className='price_to'
+     placeholder="До"
+     value={inputValue}
+     onChange={handleChange}
+     >
+    </NumberInput>
+    <Button className='apply'>Применить</Button>
 
-      <Slider
-        min={0}
-        max={100}
-        label="Slider"
-      />
+      </div>
+      
     </Container>
   );
 }

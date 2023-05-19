@@ -3,6 +3,8 @@ import Header from '../../components/Header/Header';
 import Filters from '../../components/Filters/Filters';
 import { useEffect, useState } from 'react';
 import { APIData } from '../../api/api';
+import Find from '../../components/Find/Find';
+import './index.css';
 
 export function Welcome() {
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -39,8 +41,11 @@ export function Welcome() {
     return (
       <div>
       <Header />
-      <Filters />
-     </div>
+      <div className='main'>
+        <Filters />
+       <div><Find /></div>
+      </div>
+      </div>
      
   /* 
       <Stack align="center" mt={50}>

@@ -1,0 +1,56 @@
+.component__title {
+  font-family: 'Title S/Bold';
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.button {
+  color: #acadb9;
+  background-color: white;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.filters_component {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.filters_title {
+    font-family: 'Title S/Bold';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19.36px;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+
+.filter__select {
+    margin-bottom: 20px;
+}
+
+.price_from {
+    margin-bottom: 8px;
+}
+
+.price_to {
+    margin-bottom: 20px;
+
+}
+
+.apply {
+    width: 100%;
+    background-color: #5E96FC;
+}
+
+.button:hover {
+    background-color: none;
+}
