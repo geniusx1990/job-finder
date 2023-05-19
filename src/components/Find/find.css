@@ -1,0 +1,27 @@
+.find_component {
+    display: flex;
+    justify-content: space-between;
+    width: 773px;
+    margin-bottom: 16px;
+    padding: 8px 12px;
+    border: 1px solid #EAEBED;
+    border-radius: 8px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+
+}
+
+.image {
+    margin-right: 8px;
+}
+
+.finder {
+    width: 100%;
+}
+
+.find_button {
+    background-color: #5E96FC;
+}
