@@ -1,0 +1,48 @@
+.navigation__list {
+    display: flex;
+}
+
+.header {
+    max-width: 1440px;
+    padding: 24px 0px 24px 162px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo__name {
+    text-decoration: none;
+    color: #232134;
+    font-family: 'Poppins';
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+.navigation__item {
+    list-style-type: none;
+    margin-right: 60px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo__svg {
+    margin-right: 12px;
+}
+
+.navigation__item-link {
+    font-family: 'Inter';
+    text-decoration: none;
+    color: #232134;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.navigation__item-link:hover {
+    color: #5E96FC;
+}
