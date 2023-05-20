@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, NumberInput, Select } from '@mantine/core';
 import './filters.css';
+import { CatalogItem, CatalogueResponse } from '../../interfaces';
 
 interface FiltersProps {
   accessToken: string | null;
@@ -21,7 +22,7 @@ function Filters({ accessToken }: FiltersProps) {
     }
   };
 
-  const [catalog, setCatalog] = useState([]);
+  const [catalog, setCatalog] = useState<CatalogueResponse>([]);
 
   useEffect(() => {
     const Catalogues = () => {
@@ -35,7 +36,7 @@ function Filters({ accessToken }: FiltersProps) {
         }
         )
         .then((response) => response.json())
-        .then((data) => {
+        .then((data: CatalogueResponse) => {
           console.log(data);
           setCatalog(data);
         })
@@ -58,7 +59,7 @@ function Filters({ accessToken }: FiltersProps) {
       <h2 className="filters_title">Отрасль</h2>
       <Select
         className="filter__select"
-        data={catalog.map((item) => ({
+        data={catalog.map((item: CatalogItem) => ({
           value: item.title_rus,
           label: item.title_rus,
         }))}

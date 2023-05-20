@@ -5,6 +5,7 @@ import Filters from '../../components/Filters/Filters';
 import { APIData } from '../../api/api';
 import Find from '../../components/Find/Find';
 import './index.css';
+import Vaccancies from '../../components/Vaccancies/Vaccancies';
 
 export function Welcome() {
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -42,7 +43,10 @@ export function Welcome() {
       <Header />
       <div className="main">
         <Filters accessToken={accessToken} />
-       <div><Find /></div>
+       <div>
+        <Find />
+        <Vaccancies accessToken={accessToken} />
+       </div>
       </div>
       </div>
     );
