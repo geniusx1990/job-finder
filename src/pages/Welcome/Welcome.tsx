@@ -39,16 +39,16 @@ export function Welcome() {
 
   if (!isLoading) {
     return (
-      <div>
+      <>
       <Header />
       <div className="main">
         <Filters accessToken={accessToken} />
-       <div>
+       <div className="vacancies__block">
         <Find />
         <Vaccancies accessToken={accessToken} />
        </div>
       </div>
-      </div>
+      </>
     );
   }
     return <Loader />;

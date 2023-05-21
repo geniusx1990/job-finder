@@ -3,11 +3,18 @@
 }
 
 .header {
-    max-width: 1440px;
     padding: 24px 0px 24px 162px;
-    width: 100%;
+
+   /*  max-width: 1440px;
     display: flex;
     align-items: center;
+    justify-content: start; */
+}
+
+.header_container {
+    display: flex;
+    align-items: center;
+
 }
 
 .logo__name {

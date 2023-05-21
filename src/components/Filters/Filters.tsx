@@ -49,7 +49,7 @@ function Filters({ accessToken }: FiltersProps) {
   }, []);
 
   return (
-    <Container className="filters_component" size="315px" style={{ marginBottom: '20px', border: 'solid 2px #EAEBED', borderRadius: '12px', padding: '20px', margin: '0' }}>
+    <Container className="filters_component" size="315px" style={{ marginBottom: '20px', border: 'solid 2px #EAEBED', borderRadius: '12px', padding: '20px', margin: '0', height: '300px', backgroundColor: '#FFFFFF' }}>
       <div className="header__container">
         <h2 className="component__title">Фильтры</h2>
             <Button className="button">Сбросить все x</Button>
