@@ -20,6 +20,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .page-item:first-child, .page-item:last-child {

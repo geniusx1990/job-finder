@@ -10,6 +10,7 @@ import Vaccancies from '../../components/Vaccancies/Vaccancies';
 export function Welcome() {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [keyword, setKeyword] = useState('');
 
   useEffect(() => {
     const Authorization = () => {
@@ -42,9 +43,9 @@ export function Welcome() {
       <>
       <Header />
       <div className="main">
-        <Filters accessToken={accessToken} />
+        <Filters accessToken={accessToken} keyword={keyword} />
        <div className="vacancies__block">
-        <Find />
+        <Find keyword={keyword} setKeyword={setKeyword} />
         <Vaccancies accessToken={accessToken} />
        </div>
       </div>

@@ -1,7 +1,16 @@
 import { Button, Container, Input } from '@mantine/core';
 import './find.css';
 
-function Find() {
+interface SearchBarProps {
+  keyword: string;
+  setKeyword: (value: string) => void;
+}
+
+function Find({ keyword, setKeyword }: SearchBarProps) {
+  const handleKeywordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setKeyword(event.target.value);
+  };
+
     return (
         <Container className="find_component">
           <div className="search-container">
@@ -11,6 +20,9 @@ function Find() {
             <Input
               className="finder"
               placeholder="Введите название вакансии"
+              type="text"
+              value={keyword}
+              onChange={handleKeywordChange}
               styles={{
           input: {
             border: 'none',

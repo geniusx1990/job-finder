@@ -1,5 +1,6 @@
 export interface CatalogItem {
     title_rus: string;
+    key: string;
   }
 
  export interface CatalogueResponse extends Array<CatalogItem> {}

@@ -5,20 +5,31 @@ import { CatalogItem, CatalogueResponse } from '../../interfaces';
 
 interface FiltersProps {
   accessToken: string | null;
+  keyword: string;
 }
 
-function Filters({ accessToken }: FiltersProps) {
+function Filters({ accessToken, keyword }: FiltersProps) {
   const [selectedOption, setSelectedOption] = useState<string>('');
 
   const handleOptionChange = (value: string) => {
     setSelectedOption(value);
+    console.log(value);
   };
 
-  const [inputValue, setInputValue] = useState<number | ''>('');
+  const [inputValueFrom, setInputValueFrom] = useState<number | ''>('');
 
-  const handleChange = (value: number | '') => {
+  const handleChangeFrom = (value: number | '') => {
     if (value !== '' && (typeof value === 'number' && value >= 0)) {
-      setInputValue(value);
+      setInputValueFrom(value);
+      console.log(value);
+    }
+  };
+
+  const [inputValueTo, setInputValueTo] = useState<number | ''>('');
+  const handleChangeTo = (value: number | '') => {
+    if (value !== '' && (typeof value === 'number' && value >= 0)) {
+      setInputValueTo(value);
+      console.log(value);
     }
   };
 
@@ -48,6 +59,10 @@ function Filters({ accessToken }: FiltersProps) {
     Catalogues();
   }, []);
 
+  useEffect(() => {
+    console.log('keyword:', keyword);
+  }, [keyword]);
+
   return (
     <Container className="filters_component" size="315px" style={{ marginBottom: '20px', border: 'solid 2px #EAEBED', borderRadius: '12px', padding: '20px', margin: '0', height: '300px', backgroundColor: '#FFFFFF' }}>
       <div className="header__container">
@@ -60,7 +75,7 @@ function Filters({ accessToken }: FiltersProps) {
       <Select
         className="filter__select"
         data={catalog.map((item: CatalogItem) => ({
-          value: item.title_rus,
+          value: item.key,
           label: item.title_rus,
         }))}
         value={selectedOption}
@@ -71,14 +86,14 @@ function Filters({ accessToken }: FiltersProps) {
     <NumberInput
       className="price_from"
       placeholder="От"
-      value={inputValue}
-      onChange={handleChange}
+      value={inputValueFrom}
+      onChange={handleChangeFrom}
     />
     <NumberInput
       className="price_to"
       placeholder="До"
-      value={inputValue}
-      onChange={handleChange}
+      value={inputValueTo}
+      onChange={handleChangeTo}
     />
       <Button className="apply">Применить</Button>
       </div>
