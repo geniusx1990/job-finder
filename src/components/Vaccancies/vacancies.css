@@ -1,0 +1,11 @@
+.active {
+    color: red;
+}
+
+.pagination {
+    display: flex;
+}
+
+.page-item {
+    margin-right: 1rem;
+  }
