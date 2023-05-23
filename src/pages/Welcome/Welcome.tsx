@@ -46,7 +46,7 @@ export function Welcome() {
         <Filters accessToken={accessToken} keyword={keyword} />
        <div className="vacancies__block">
         <Find keyword={keyword} setKeyword={setKeyword} />
-        <Vaccancies accessToken={accessToken} />
+        <Vaccancies accessToken={accessToken} keyword={keyword} />
        </div>
       </div>
       </>

@@ -7,12 +7,13 @@ import './vacancies.css';
 
 interface VacanciesProps {
   accessToken: string | null;
+  keyword: string;
 }
 
 const pageCount: number = 125;
 const count: number = 4;
 
-function Vacancies({ accessToken }: VacanciesProps) {
+function Vacancies({ accessToken, keyword }: VacanciesProps) {
   const [vacancies, setVacancies] = useState<IVacancy[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -21,7 +22,7 @@ function Vacancies({ accessToken }: VacanciesProps) {
 
     const VaccanciesData = () => {
         fetch(
-          `https://startup-summer-2023-proxy.onrender.com/2.0/vacancies?published=1&count=${count}&page=${currentPage}`,
+          `https://startup-summer-2023-proxy.onrender.com/2.0/vacancies?published=1&count=${count}&page=${currentPage}&keyword=${keyword}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -41,7 +42,7 @@ function Vacancies({ accessToken }: VacanciesProps) {
     };
 
     VaccanciesData();
-  }, [accessToken, currentPage]);
+  }, [accessToken, currentPage, keyword]);
 
   const handlePageClick = (selected: { selected: number }) => {
     setCurrentPage(selected.selected + 1);
