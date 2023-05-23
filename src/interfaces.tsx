@@ -18,4 +18,5 @@ export interface CatalogItem {
     payment_to: number;
     payment_from: number;
     currency: string;
+    vacancyRichText: string;
   }

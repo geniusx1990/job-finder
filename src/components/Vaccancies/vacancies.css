@@ -1,11 +1,27 @@
 .active {
-    color: red;
+  color: #FFFFFF;
+  background-color: #5E96FC;
 }
 
 .pagination {
-    display: flex;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 40px 0px 44px 0px;
+  justify-content: center;
 }
 
 .page-item {
-    margin-right: 1rem;
-  }
+  margin-right: 8px;
+  border: 1px solid #eaebed;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.page-item:first-child, .page-item:last-child {
+  color: #7B7C88;
+}

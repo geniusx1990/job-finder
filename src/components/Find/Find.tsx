@@ -15,6 +15,7 @@ function Find() {
           input: {
             border: 'none',
             padding: '0px',
+            width: '216px',
           },
         }}
             />

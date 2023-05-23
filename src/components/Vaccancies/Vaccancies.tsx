@@ -33,6 +33,7 @@ function Vacancies({ accessToken }: VacanciesProps) {
         .then((response) => response.json())
             .then((data) => {
               setVacancies(data.objects);
+              console.log(data.objects);
             })
       .catch((error) => {
         console.error('Error fetching vacancies:', error);
@@ -49,15 +50,15 @@ function Vacancies({ accessToken }: VacanciesProps) {
   return (
     <div>
       {vacancies.map((vacancy: IVacancy) => (
-        <Vacancy key={vacancy.id} vacancy={vacancy} />
+        <Vacancy key={vacancy.id} vacancy={vacancy} accessToken={accessToken} />
       ))}
       <ReactPaginate
-        nextLabel="next >"
+        nextLabel=">"
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         marginPagesDisplayed={0}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel="<"
         pageClassName="page-item"
         pageLinkClassName="page-link"
         previousClassName="page-item"
