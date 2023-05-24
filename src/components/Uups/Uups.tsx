@@ -125,7 +125,7 @@ function Uups() {
 </defs>
         </svg>
             <h2 className="message">Упс, здесь еще ничего нет!</h2>
-            <Link to="/favorites">
+            <Link to="/">
         <Button className="linko-to-find">Поиск Вакансий</Button>
             </Link>
            </Container>;
