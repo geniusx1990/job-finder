@@ -8,12 +8,17 @@ import './vacancies.css';
 interface VacanciesProps {
   accessToken: string | null;
   keyword: string;
+  onApply: (inputValueFrom: number | '', inputValueTo: number | '', selectedOption: string | '') => void;
+  inputValueFrom: number | '';
+  inputValueTo: number | '';
+  selectedOption: string | '';
 }
 
 const pageCount: number = 125;
 const count: number = 4;
 
-function Vacancies({ accessToken, keyword }: VacanciesProps) {
+function Vacancies({ accessToken, keyword, onApply, inputValueFrom,
+  inputValueTo, selectedOption }: VacanciesProps) {
   const [vacancies, setVacancies] = useState<IVacancy[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -22,7 +27,7 @@ function Vacancies({ accessToken, keyword }: VacanciesProps) {
 
     const VaccanciesData = () => {
         fetch(
-          `https://startup-summer-2023-proxy.onrender.com/2.0/vacancies?published=1&count=${count}&page=${currentPage}&keyword=${keyword}`,
+          `https://startup-summer-2023-proxy.onrender.com/2.0/vacancies?published=1&count=${count}&page=${currentPage}&keyword=${keyword}&payment_from=${inputValueFrom}&payment_to=${inputValueTo}&catalogues=${selectedOption}&no_agreement=1`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -34,15 +39,16 @@ function Vacancies({ accessToken, keyword }: VacanciesProps) {
         .then((response) => response.json())
             .then((data) => {
               setVacancies(data.objects);
-              console.log(data.objects);
             })
       .catch((error) => {
         console.error('Error fetching vacancies:', error);
       });
+
+      onApply(inputValueFrom, inputValueTo, selectedOption);
     };
 
     VaccanciesData();
-  }, [accessToken, currentPage, keyword]);
+  }, [accessToken, currentPage, keyword, inputValueFrom, inputValueTo, selectedOption]);
 
   const handlePageClick = (selected: { selected: number }) => {
     setCurrentPage(selected.selected + 1);

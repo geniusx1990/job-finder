@@ -6,14 +6,15 @@ import { CatalogItem, CatalogueResponse } from '../../interfaces';
 interface FiltersProps {
   accessToken: string | null;
   keyword: string;
+  onApply: (inputValueFrom: number | '', inputValueTo: number | '', selectedOption: string | '') => void;
+  onReset: () => void;
 }
 
-function Filters({ accessToken, keyword }: FiltersProps) {
+function Filters({ accessToken, keyword, onApply, onReset }: FiltersProps) {
   const [selectedOption, setSelectedOption] = useState<string>('');
 
   const handleOptionChange = (value: string) => {
     setSelectedOption(value);
-    console.log(value);
   };
 
   const [inputValueFrom, setInputValueFrom] = useState<number | ''>('');
@@ -21,7 +22,6 @@ function Filters({ accessToken, keyword }: FiltersProps) {
   const handleChangeFrom = (value: number | '') => {
     if (value !== '' && (typeof value === 'number' && value >= 0)) {
       setInputValueFrom(value);
-      console.log(value);
     }
   };
 
@@ -29,11 +29,21 @@ function Filters({ accessToken, keyword }: FiltersProps) {
   const handleChangeTo = (value: number | '') => {
     if (value !== '' && (typeof value === 'number' && value >= 0)) {
       setInputValueTo(value);
-      console.log(value);
     }
   };
 
   const [catalog, setCatalog] = useState<CatalogueResponse>([]);
+
+  const handleApply = () => {
+    onApply(inputValueFrom, inputValueTo, selectedOption);
+  };
+
+  const handleReset = () => {
+    setSelectedOption('');
+    setInputValueFrom('');
+    setInputValueTo('');
+    onReset();
+  };
 
   useEffect(() => {
     const Catalogues = () => {
@@ -48,7 +58,6 @@ function Filters({ accessToken, keyword }: FiltersProps) {
         )
         .then((response) => response.json())
         .then((data: CatalogueResponse) => {
-          console.log(data);
           setCatalog(data);
         })
         .catch((error) => {
@@ -67,7 +76,7 @@ function Filters({ accessToken, keyword }: FiltersProps) {
     <Container className="filters_component" size="315px" style={{ marginBottom: '20px', border: 'solid 2px #EAEBED', borderRadius: '12px', padding: '20px', margin: '0', height: '300px', backgroundColor: '#FFFFFF' }}>
       <div className="header__container">
         <h2 className="component__title">Фильтры</h2>
-            <Button className="button">Сбросить все x</Button>
+            <Button className="button" onClick={handleReset}>Сбросить все x</Button>
       </div>
 
       <div className="filters">
@@ -95,7 +104,7 @@ function Filters({ accessToken, keyword }: FiltersProps) {
       value={inputValueTo}
       onChange={handleChangeTo}
     />
-      <Button className="apply">Применить</Button>
+      <Button className="apply" onClick={handleApply}>Применить</Button>
       </div>
 
     </Container>
