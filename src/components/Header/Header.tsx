@@ -13,7 +13,7 @@ function Header() {
     <nav className="navigation">
       <ul className="navigation__list">
         <li className="navigation__item"><Link className="navigation__item-link" to="/">Поиск вакансий</Link></li>
-        <li className="navigation__item"><Link className="navigation__item-link" to="/">Избранное</Link></li>
+        <li className="navigation__item"><Link className="navigation__item-link" to="/favorites">Избранное</Link></li>
       </ul>
     </nav>
     </div>

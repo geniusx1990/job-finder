@@ -1,0 +1,29 @@
+body {
+    background-color: #F5F5F5;
+}
+
+.uups-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px;
+}
+
+.linko-to-find {
+    width: 164px;
+    height: 42px;
+    border-radius: 8px;
+    background-color: #DEECFF;
+    border: none;
+    color: #3B7CD3;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21.7px;
+}
+
+.linko-to-find:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+  }
