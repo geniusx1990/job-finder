@@ -19,6 +19,7 @@ function Find({ keyword, setKeyword }: SearchBarProps) {
             </svg>
             <Input
               className="finder"
+              data-elem="search-input"
               placeholder="Введите название вакансии"
               type="text"
               value={keyword}
@@ -32,7 +33,7 @@ function Find({ keyword, setKeyword }: SearchBarProps) {
         }}
             />
           </div>
-          <Button className="find_button">Поиск</Button>
+          <Button className="find_button" data-elem="search-button">Поиск</Button>
         </Container>
 );
 }

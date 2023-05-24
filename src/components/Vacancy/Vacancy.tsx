@@ -45,7 +45,7 @@ function Vacancy({ vacancy, accessToken }: VacancyProps) {
     return (
       <Link to={`/vacancy/${id}?accessToken=${accessToken}`} className="vacancy__link">
 
-        <Container className="vacancy__containner">
+        <Container className="vacancy__containner" data-elem={`vacancy-${vacancy.id}`}>
          <div className="vacancy__content">
             <h2 className="vacancy__title">{vacancy.profession}</h2>
             <ul className="vacancy__description">

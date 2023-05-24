@@ -83,6 +83,7 @@ function Filters({ accessToken, keyword, onApply, onReset }: FiltersProps) {
       <h2 className="filters_title">Отрасль</h2>
       <Select
         className="filter__select"
+        data-elem="industry-select"
         data={catalog.map((item: CatalogItem) => ({
           value: item.key,
           label: item.title_rus,
@@ -97,12 +98,14 @@ function Filters({ accessToken, keyword, onApply, onReset }: FiltersProps) {
       placeholder="От"
       value={inputValueFrom}
       onChange={handleChangeFrom}
+      data-elem="salary-from-input"
     />
     <NumberInput
       className="price_to"
       placeholder="До"
       value={inputValueTo}
       onChange={handleChangeTo}
+      data-elem="salary-to-input"
     />
       <Button className="apply" onClick={handleApply}>Применить</Button>
       </div>
