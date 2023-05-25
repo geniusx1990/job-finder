@@ -11,7 +11,8 @@ interface VacancyProps {
 
 function Vacancy({ vacancy, accessToken }: VacancyProps) {
   const { id, profession, payment_from, payment_to, firm_name, town } = vacancy;
-  const [isFavorite, setIsFavorite] = useState(vacancy.favorite);
+  const [isFavorite, setIsFavorite] = useState(vacancy.favoriteItem);
+  console.log(vacancy.favoriteItem);
 
   const SVGClick = (event: React.MouseEvent<HTMLOrSVGElement>) => {
     event.stopPropagation();
@@ -34,15 +35,14 @@ function Vacancy({ vacancy, accessToken }: VacancyProps) {
         type_of_work: vacancy.type_of_work,
         currency: vacancy.currency,
         vacancyRichText: vacancy.vacancyRichText,
-        favorite: true,
+        favoriteItem: true,
       };
 
       savedVacancies.push(newVacancy);
       localStorage.setItem('vacancies', JSON.stringify(savedVacancies));
     }
   };
-
-    return (
+      return (
       <Link to={`/vacancy/${id}?accessToken=${accessToken}`} className="vacancy__link">
 
         <Container className="vacancy__containner" data-elem={`vacancy-${vacancy.id}`}>
