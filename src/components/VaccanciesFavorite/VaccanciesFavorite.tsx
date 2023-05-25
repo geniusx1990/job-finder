@@ -3,6 +3,7 @@ import ReactPaginate from 'react-paginate';
 import Vacancy from '../Vacancy/Vacancy';
 import { IVacancy } from '../../interfaces';
 import './vacancies.css';
+import Uups from '../Uups/Uups';
 
 interface VacanciesProps {
   accessToken: string | null;
@@ -11,6 +12,7 @@ interface VacanciesProps {
 function VaccanciesFavorite({ accessToken }: VacanciesProps) {
   const [vacancies, setVacancies] = useState<IVacancy[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const isLocalStorageEmpty = localStorage.getItem('vacancies') === null || localStorage.getItem('vacancies') === '[]';
 
   useEffect(() => {
     const savedVacancies: IVacancy[] = JSON.parse(localStorage.getItem('vacancies') || '[]');
@@ -28,7 +30,9 @@ function VaccanciesFavorite({ accessToken }: VacanciesProps) {
     localStorage.setItem('vacancies', JSON.stringify(updatedVacancies));
   };
 
-  return (
+  if (isLocalStorageEmpty) {
+    return <Uups />;
+  } return (
     <div className="vaccancies__container_favorites">
       {vacancies.map((vacancy: IVacancy) => (
         <Vacancy
