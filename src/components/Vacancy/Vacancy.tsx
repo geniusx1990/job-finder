@@ -7,12 +7,12 @@ import { IVacancy } from '../../interfaces';
 interface VacancyProps {
     vacancy: IVacancy;
     accessToken: string | null;
+    onRemoveVacancy: (id: number) => void;
   }
 
-function Vacancy({ vacancy, accessToken }: VacancyProps) {
+function Vacancy({ vacancy, accessToken, onRemoveVacancy }: VacancyProps) {
   const { id, profession, payment_from, payment_to, firm_name, town } = vacancy;
   const [isFavorite, setIsFavorite] = useState(vacancy.favoriteItem);
-  console.log(vacancy.favoriteItem);
 
   const SVGClick = (event: React.MouseEvent<HTMLOrSVGElement>) => {
     event.stopPropagation();
@@ -21,6 +21,7 @@ function Vacancy({ vacancy, accessToken }: VacancyProps) {
 
     if (isFavorite) {
       setIsFavorite(false);
+      onRemoveVacancy(id);
       const updatedVacancies = savedVacancies.filter((savedVacancy) => savedVacancy.id !== id);
       localStorage.setItem('vacancies', JSON.stringify(updatedVacancies));
     } else {

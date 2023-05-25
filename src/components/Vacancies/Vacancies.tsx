@@ -50,6 +50,9 @@ function Vacancies({ accessToken, keyword, onApply, inputValueFrom,
     VaccanciesData();
   }, [accessToken, currentPage, keyword, inputValueFrom, inputValueTo, selectedOption]);
 
+  const handleRemoveVacancy = () => {
+  };
+
   const handlePageClick = (selected: { selected: number }) => {
     setCurrentPage(selected.selected + 1);
   };
@@ -57,7 +60,12 @@ function Vacancies({ accessToken, keyword, onApply, inputValueFrom,
   return (
     <div>
       {vacancies.map((vacancy: IVacancy) => (
-        <Vacancy key={vacancy.id} vacancy={vacancy} accessToken={accessToken} />
+        <Vacancy
+          key={vacancy.id}
+          vacancy={vacancy}
+          accessToken={accessToken}
+          onRemoveVacancy={handleRemoveVacancy}
+        />
       ))}
       <ReactPaginate
         nextLabel=">"

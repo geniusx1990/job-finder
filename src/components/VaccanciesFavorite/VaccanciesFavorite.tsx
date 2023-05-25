@@ -11,19 +11,32 @@ interface VacanciesProps {
 function VaccanciesFavorite({ accessToken }: VacanciesProps) {
   const [vacancies, setVacancies] = useState<IVacancy[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
+
   useEffect(() => {
     const savedVacancies: IVacancy[] = JSON.parse(localStorage.getItem('vacancies') || '[]');
-    setVacancies(savedVacancies);
+
+      setVacancies(savedVacancies);
   }, [currentPage]);
 
   const handlePageClick = (selected: { selected: number }) => {
     setCurrentPage(selected.selected + 1);
   };
 
+  const handleRemoveVacancy = (id: number) => {
+    const updatedVacancies = vacancies.filter((vacancy) => vacancy.id !== id);
+    setVacancies(updatedVacancies);
+    localStorage.setItem('vacancies', JSON.stringify(updatedVacancies));
+  };
+
   return (
     <div className="vaccancies__container_favorites">
       {vacancies.map((vacancy: IVacancy) => (
-        <Vacancy key={vacancy.id} vacancy={vacancy} accessToken={accessToken} />
+        <Vacancy
+          key={vacancy.id}
+          vacancy={vacancy}
+          accessToken={accessToken}
+          onRemoveVacancy={handleRemoveVacancy}
+        />
       ))}
       <ReactPaginate
         nextLabel=">"
