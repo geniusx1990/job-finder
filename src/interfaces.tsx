@@ -20,4 +20,5 @@ export interface CatalogItem {
     payment_from: number;
     currency: string;
     vacancyRichText: string;
+    favorite: boolean;
   }

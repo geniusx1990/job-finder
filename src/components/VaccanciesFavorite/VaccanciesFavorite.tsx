@@ -11,7 +11,6 @@ interface VacanciesProps {
 function VaccanciesFavorite({ accessToken }: VacanciesProps) {
   const [vacancies, setVacancies] = useState<IVacancy[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-
   useEffect(() => {
     const savedVacancies: IVacancy[] = JSON.parse(localStorage.getItem('vacancies') || '[]');
     setVacancies(savedVacancies);

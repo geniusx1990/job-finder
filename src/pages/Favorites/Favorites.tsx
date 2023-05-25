@@ -4,7 +4,7 @@ import VaccanciesFavorite from '../../components/VaccanciesFavorite/VaccanciesFa
 import './favorites.css';
 
 function Favorites() {
-  const isLocalStorageEmpty = localStorage.getItem('vacancies') === null || localStorage.getItem('vacancies') === '';
+  const isLocalStorageEmpty = localStorage.getItem('vacancies') === null || localStorage.getItem('vacancies') === '[]';
 
   return (
     <>
