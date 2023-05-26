@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button, Container, Input } from '@mantine/core';
 import './find.css';
+import { useState } from 'react';
 
 interface SearchBarProps {
   keyword: string;
@@ -7,8 +9,13 @@ interface SearchBarProps {
 }
 
 function Find({ keyword, setKeyword }: SearchBarProps) {
+  const [searchValue, setSearchValue] = useState('');
   const handleKeywordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyword(event.target.value);
+    setSearchValue(event.target.value);
+  };
+
+  const test = () => {
+    setKeyword(searchValue);
   };
 
     return (
@@ -22,7 +29,7 @@ function Find({ keyword, setKeyword }: SearchBarProps) {
               data-elem="search-input"
               placeholder="Введите название вакансии"
               type="text"
-              value={keyword}
+              value={searchValue}
               onChange={handleKeywordChange}
               styles={{
           input: {
@@ -33,7 +40,7 @@ function Find({ keyword, setKeyword }: SearchBarProps) {
         }}
             />
           </div>
-          <Button className="find_button" data-elem="search-button">Поиск</Button>
+          <Button className="find_button" data-elem="search-button" onClick={test}>Поиск</Button>
         </Container>
 );
 }
