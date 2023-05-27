@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './header.css';
 import { Container } from '@mantine/core';
 
@@ -13,8 +13,8 @@ function Header() {
     </div>
     <nav className="navigation">
       <ul className="navigation__list">
-        <li className="navigation__item"><Link className="navigation__item-link" to="/">Поиск вакансий</Link></li>
-        <li className="navigation__item"><Link className="navigation__item-link" to="/favorites">Избранное</Link></li>
+        <li className="navigation__item"><NavLink className="navigation__item-link" to="/">Поиск вакансий</NavLink></li>
+        <li className="navigation__item"><NavLink className="navigation__item-link" to="/favorites">Избранное</NavLink></li>
       </ul>
     </nav>
     </Container>

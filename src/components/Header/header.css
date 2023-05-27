@@ -1,5 +1,6 @@
 .navigation__list {
     display: flex;
+    padding-left: 0px;
 }
 
 .header {
@@ -15,10 +16,11 @@
     justify-content: start;
     width: 100%;
     height: 84px;
-
-
 }
 
+.navigation {
+    margin-left: 280px;
+}
 .logo__name {
     text-decoration: none;
     color: #232134;
@@ -31,6 +33,10 @@
 .navigation__item {
     list-style-type: none;
     margin-right: 60px;
+}
+
+.navigation__item:last-child {
+    margin-right: 0;
 }
 
 .logo {
@@ -54,4 +60,10 @@
 
 .navigation__item-link:hover {
     color: #5E96FC;
+}
+
+.navigation__item-link.active {
+    color: #5E96FC;
+    font-weight: 500;
+    background-color: inherit;
 }

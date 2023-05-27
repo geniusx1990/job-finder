@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: start;
-    width: 773px;
+    width: 100%;
     margin-bottom: 16px;
     padding: 24px;
     border: 1px solid #EAEBED;
@@ -15,4 +15,6 @@
 }
 body {
     background-color: #F5F5F5;
+}
+.vacancy__containner {
 }
