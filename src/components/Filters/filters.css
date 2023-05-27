@@ -1,11 +1,15 @@
 .component__title {
-  font-family: 'Title S/Bold';
+  font-family: 'Inter';
   font-weight: 700;
   font-size: 20px;
   line-height: 20px;
 }
 
 .button {
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
   color: #acadb9;
   background-color: white;
 }
@@ -16,40 +20,37 @@
   align-items: center;
 }
 
-
 .filters_component {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .filters_title {
-    font-family: 'Title S/Bold';
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19.36px;
-    margin-top: 0;
-    margin-bottom: 8px;
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19.36px;
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 
-
 .filter__select {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .price_from {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .price_to {
-    margin-bottom: 20px;
-
+  margin-bottom: 20px;
 }
 
 .apply {
-    width: 100%;
-    background-color: #5E96FC;
+  width: 100%;
+  background-color: #5e96fc;
 }
 
 .button:hover {
-    background-color: none;
+  background-color: none;
 }

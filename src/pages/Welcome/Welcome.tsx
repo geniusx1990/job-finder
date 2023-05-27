@@ -1,4 +1,4 @@
-import { Loader } from '@mantine/core';
+import { Container, Loader } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import Filters from '../../components/Filters/Filters';
@@ -58,7 +58,7 @@ export function Welcome() {
     return (
       <>
       <Header />
-      <div className="main">
+        <Container className="main">
         <Filters
           accessToken={accessToken}
           keyword={keyword}
@@ -77,7 +77,7 @@ export function Welcome() {
           key={resetKey}
         />
        </div>
-      </div>
+        </Container>
       </>
     );
   }
