@@ -65,7 +65,7 @@ export function Welcome() {
           onApply={handleApplyFilters}
           onReset={handleResetFilters}
         />
-       <div className="vacancies__block">
+       <Container className="vacancies__block">
         <Find keyword={keyword} setKeyword={setKeyword} />
         <Vacancies
           accessToken={accessToken}
@@ -76,7 +76,7 @@ export function Welcome() {
           selectedOption={filterSelectedOption}
           key={resetKey}
         />
-       </div>
+       </Container>
         </Container>
       </>
     );

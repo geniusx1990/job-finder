@@ -1,10 +1,15 @@
 .main {
-    display: flex;
-    background-color: #F5F5F5;
-    padding-top: 40px;
-
+  display: flex;
+  background-color: #f5f5f5;
+  padding-top: 40px;
+  justify-content: space-around;
 }
 
 .vacancies__block {
-    margin-left: 28px;
+  margin-left: 28px;
+  padding: 0;
+}
+
+.mantine-d9zk78 {
+  max-width: 69rem;
 }

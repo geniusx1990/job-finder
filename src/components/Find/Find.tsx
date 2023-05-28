@@ -35,7 +35,8 @@ function Find({ keyword, setKeyword }: SearchBarProps) {
           input: {
             border: 'none',
             padding: '0px',
-            width: '216px',
+            margin: '0px',
+            width: '100%',
           },
         }}
             />

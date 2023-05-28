@@ -13,7 +13,6 @@ function VaccanciesFavorite({ accessToken }: VacanciesProps) {
   const [vacancies, setVacancies] = useState<IVacancy[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const isLocalStorageEmpty = localStorage.getItem('vacancies') === null || localStorage.getItem('vacancies') === '[]';
-
   useEffect(() => {
     const savedVacancies: IVacancy[] = JSON.parse(localStorage.getItem('vacancies') || '[]');
 
